@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1762526183 source:/home/acherontas/codeblocks/sqrt_downgrade_arm64/main.cpp
+	<iostream>
+	<iomanip>
+	"math.h"
+	"old_project.h"
+
+1762525912 /home/acherontas/codeblocks/sqrt_downgrade_arm64/old_project.h
+
+1762525781 source:/home/acherontas/codeblocks/sqrt_downgrade_arm64/old_project.cpp
+	"old_project.h"
+	<string.h>
+	<iostream>
+	"math.h"
+	<iomanip>
+

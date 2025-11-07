@@ -1,0 +1,25 @@
+#ifndef OLD_PROJECT_H
+#define OLD_PROJECT_H
+
+
+class old_project
+{
+    public:
+        old_project();
+        virtual ~old_project();
+        old_project(const old_project& other);
+        old_project& operator=(const old_project& other);
+        float sbtl;
+        int xlg=-1;
+        int preci=-1;
+        int lgth(double nmb);
+        int epilogi_ena(long double sqrt_nmb,long double nmb);
+        int epilogi_deuteri(double a,int b);
+        int new_downgrade(long double main_number,long double indiv_sum,float stbl);
+
+    protected:
+
+    private:
+};
+
+#endif // OLD_PROJECT_H
