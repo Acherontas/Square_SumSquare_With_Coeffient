@@ -1,0 +1,177 @@
+#include "old_project.h"
+#include <string.h>
+#include <iostream>
+#include "math.h"
+#include <iomanip>
+using namespace std;
+//ctor
+old_project::old_project(){}
+//dtor
+old_project::~old_project(){}
+//copy ctor
+old_project::old_project(const old_project& other){}
+// handle self assignment//assignment operator
+old_project& old_project::operator=(const old_project& rhs){if (this == &rhs) return *this; return *this;}
+
+string s;
+long double ar[100],rst[100];
+double sm=0,pwd,rti,frs;
+char k;int xl;
+double fn_result;
+double sn_result;
+
+int old_project::new_downgrade(long double main_number,long double indiv_sum,float stbl){
+    //cout<<"enter number \n";
+    //cin>>main_number;
+    //cout<<"enter indiv_sum \n";
+    //cin>>indiv_sum;
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"      ------> START OF GUESS  <------ \n";
+    cout<<"enter float stable value 0.[0]1 \n";
+    cin>>stbl;
+    float stincrea;
+    cout<<"enter float increase value eg 0.[0]0001\n";
+    cin>>stincrea;
+    cout<<"@ new_downgrade using " << std::setprecision(preci) <<   main_number <<"\n";
+    cout<<"individual sum " << std::setprecision(preci) <<  indiv_sum <<"\n";
+    cout<<"stable " <<  stbl <<"\n";
+    int fnd=0;
+    long double rmn=0;
+    long double rst;
+    for(;;){
+       rst=(long double)indiv_sum/(long double)stbl;
+       rmn=rst*rst;
+       if(rmn<=main_number){
+                                fnd=1;
+                                cout<<"      ------> da rmn " <<std::setprecision(preci) << rmn <<"\n";
+                                cout<<"      ------> da rst  " << std::setprecision(preci) << rst <<"\n";
+                                cout<<"      ------> da indiv_sum " <<std::setprecision(preci) << indiv_sum <<"\n";
+                                cout<<"      ------> stbl without precision " << stbl <<"\n";
+                                cout<<"      ------> with stbl value " << std::setprecision(preci) <<stbl <<"\n";
+                           }
+       stbl=stbl+stincrea;
+       //stbl=stbl+0.00001;
+       //cout<<"new stbl " << stbl << " |           | " ;
+       if(stbl==2 || fnd==1){break;}
+    }
+    cout<<"\n";
+    cout<<"      ------> reporting times/fores of value ::== " << std::setprecision(preci) <<stbl <<"\n";
+    cout<<"\n";
+    long double irst=0;
+    irst=(long double)indiv_sum/(long double)stbl;
+    cout<<"      ------> using " << std::setprecision(preci) << indiv_sum << " / " << std::setprecision(preci) << stbl << " ::== " << std::setprecision(preci) << irst <<"\n";
+    long double rist=0;
+    rist=irst*irst;
+    cout<<"      ------> and  " << std::setprecision(preci) << irst << " * " << std::setprecision(preci) << irst << " ::== " << std::setprecision(preci) << rist <<"\n";
+    cout<<"      ------> END OF GUESS  <------ \n";
+return 0;
+}
+
+int old_project::lgth(double nmb){
+     s+=to_string(nmb);
+     int xi=0;
+     for(int i=0;i<=s.size()-1;i++){
+        if(s.at(i)!=*"."){xi+=1;}
+        if(s.at(i)==*"."){break;}
+     }
+     cout<<"legnth of function is " << xi <<"\n";
+     return xi;
+}
+
+int old_project::epilogi_ena(long double sqrt_nmb,long double nmb){
+   for(int i=0;i<=xlg-1;i++){
+      cout<<"\n";
+      cout<<"for @i " << i << " enter number with " << xlg-i-1 << " zeros " ;
+      pwd=pow(10,xlg-i-1);
+      if(s.at(i)!=*"."){
+        k=s.at(i);
+        xl=stoi(&k);
+        rti=xl*pwd;
+        ar[i]=rti;
+        cout<<"for number " << std::setprecision(preci) << rti <<"\n";
+        rst[i]=sqrt(ar[i]);
+        sm=sm+rst[i];
+        cout<<" with sqrt as " << rst[i] <<" and current sum " << std::setprecision(preci) <<  sm <<"\n";
+      }
+      if(s.at(i)==*"."){break;}
+    }
+    cout<<"\n";
+    cout<<"for final sum : " <<  sm <<"\n";
+    cout<<"\n";
+    cout<<"not using the sqrt result of above. Trying to Guess the fores \n";
+    cout<<"sbtl " << sbtl <<"\n";
+    this->new_downgrade(nmb,sm,sbtl);
+    cout<<"\n";
+    cout<<"\n";
+    cout<<"using the sum of above of individual number square result \n";
+    cout<<"and the square of the main number \n";
+    frs=(long double)sm/(long double)sqrt_nmb;
+    cout<<"oi fores einai : " << std::setprecision(preci) <<  frs <<" \n";
+    cout<<"almost around square of 2 xD ? \n";
+
+    long double dr_one;
+    long double dr_two;
+    long double rmdr;
+    long double aprx;
+
+    dr_one=nmb/sm;
+    //dr_two=nmb/dr_one;
+    rmdr=sm-dr_one;
+    aprx=rmdr*frs;
+
+    cout<<"---------\n";
+    cout<<"of Main Number - Sum " <<std::setprecision(preci) <<  nmb << " / " << std::setprecision(preci) << sm << " ::== " << std::setprecision(preci) <<  dr_one <<"\n";
+    cout<<"of Sum - Above Result " <<std::setprecision(preci) <<  sm << " - " <<std::setprecision(preci) <<  dr_one << " ::== " << std::setprecision(preci) <<  rmdr <<"\n";
+    cout<<"and result of " <<std::setprecision(preci) << rmdr << " * " <<std::setprecision(preci) <<  frs << " ::== " << std::setprecision(preci) <<  aprx <<"\n";
+    cout<<"a square approximation MAYBE WILL BE : " <<  std::setprecision(preci) <<  aprx <<" NOT WORKING AS INTENDED \n";
+
+    cout<<"---------\n";
+    dr_one=nmb/sm;
+    rmdr=dr_one*frs;
+    cout<<"of Main Number - Sum " <<std::setprecision(preci) <<  nmb <<" / " <<std::setprecision(preci) <<  sm << " ::== " <<std::setprecision(preci) <<  dr_one <<"\n";
+    cout<<"of Above * fores " <<std::setprecision(preci) <<  dr_one << " * " <<std::setprecision(preci) <<  frs << " ::== " << std::setprecision(preci) << rmdr <<"\n";
+    cout<<"a square approximation MAYBE WILL BE : " <<std::setprecision(preci) <<  rmdr << " POSSIBLE NOT WORKING AS INTENDED \n";
+
+    cout<<"---------\n";
+    cout<<"\n";
+    long double axrp;
+    axrp=sm/frs;
+    cout<<"with sm " <<std::setprecision(preci) <<  sm << " and frs " <<std::setprecision(preci) <<  frs << " and action of '/' " << "\n";
+    cout<<"a square approximation MAYBE WILL BE : " <<std::setprecision(preci) <<  axrp <<"\n";
+
+    return 0;
+}
+
+int old_project::epilogi_deuteri(double a,int b){
+   fn_result=sqrt(a);
+   int flgth=lgth(a);
+   cout<<"the square root number of the first number : " << a  << " is " << fn_result <<" with legnth " << flgth <<"\n";
+   cout<<"\n";
+   cout<<"calculating :\n";
+   cout<<"creating the set of number between the start and the 99th end \n";
+   pwd=pow(10,b);
+   double tuple_man;
+   tuple_man=a*pwd;
+   cout<<"start number will be " << tuple_man <<" with pwd " << pwd <<" :: ";
+   pwd=pow(10,b)-1;
+   double end_t_m;
+   end_t_m=tuple_man + pwd;
+   cout<<"end number will be " << end_t_m <<" with pwd " << pwd <<"\n";
+   int xli=0;
+   cout<<"\n";
+   for(int i=tuple_man;i<=end_t_m;i++){
+      sn_result=sqrt(i);
+      cout<<"for " << i << " sqrt is " << sn_result <<" || ";
+      xli+=1;
+      if(xli%6==0){
+        cout<<"\n";
+      }
+   }
+   cout<<"\n";
+   return 0;
+}
+
+
+
+
